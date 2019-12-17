@@ -1,0 +1,152 @@
+h2 {
+    text-align: center;
+}
+/*页脚*/
+#footer {
+    width: 100%;
+    height: 50px;
+    margin-top: 39px;
+    margin-bottom: 100px;
+    background-color: rgb(243,243,243);
+    border-top: 1px solid #e9e9e9;
+    border-bottom: 1px solid #e9e9e9;
+    font-size: 14px;
+}
+/*.clearfix::after {*/
+    /*content: '';*/
+    /*height: 0;*/
+    /*display: block;*/
+    /*clear: both;*/
+/*}*/
+.footStyle {
+    display: inline-block;
+    margin-top: 14px;
+    margin-left: 16px;
+    color: rgb(184, 184, 184);
+}
+/*多选框*/
+.checkbox {
+    color: #1f2d3d;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: 200;
+    line-height: 20px;
+    font-size: 14px;
+}
+.checkbox-input {
+    margin-right: 20px;
+    outline: 0;
+    line-height: 1;
+    vertical-align: middle;
+    display: inline-block;
+}
+.checkbox-inner:hover {
+    border-color: #20a0ff;
+}
+.checkbox-inner {
+    display: inline-block;
+    border: 1px solid #bfcbd9;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    z-index: 1;
+    transition: border-color .25s cubic-bezier(.71,-.46,.29,1.46),background-color .25s cubic-bezier(.71,-.46,.29,1.46);
+}
+.checkbox-original:checked + .checkbox-inner {
+    background-color: #20a0ff;
+}
+.checkbox-original:checked + .checkbox-inner::after{
+    box-sizing: content-box;
+    content: "";
+    border: 2px solid #fff;
+    border-left: 0;
+    border-top: 0;
+    height: 8px;
+    left: 5px;
+    position: absolute;
+    top: 3px;
+    left: 6px;
+    -ms-transform: rotate(45deg) ;
+    transform: rotate(45deg) ;
+    width: 4px;
+    transition: transform .15s cubic-bezier(.71,-.46,.88,.6) .05s;
+    -ms-transform-origin: center;
+    transform-origin: center;
+}
+/*input[type=checkbox] {*/
+/*display: none;*/
+/*}*/
+.checkbox-original {
+    opacity: 0;
+    outline: 0;
+    position: absolute;
+    margin: 0;
+    width: 0;
+    height: 0;
+}
+.checkbox-label {
+    margin-left: -20px;
+    color: #999999;
+    font-weight: normal;
+    font-size: 14px;
+    padding-left: 5px;
+}
+/*删除选中的商品或服务*/
+.deleteCheck {
+    cursor: pointer;
+}
+/*批量加到收藏*/
+.removeCheck {
+    cursor: pointer;
+}
+/*红色字体*/
+.redColor {
+    color: red;
+}
+/*已选择0件商品*/
+.foot1 {
+    position: absolute;
+    right: 40%;
+}
+/*总价*/
+.foot2 {
+    margin-top: 9px;
+    position: absolute;
+    right: 130px;
+}
+.total {
+    font-size: 20px;
+}
+/*结算按钮*/
+.btn3 {
+    position: absolute;
+    right: 0;
+    width: 100px;
+    height: 50px;
+    color: #fff;
+    background-color: rgb(32,156,235);
+    text-align: center;
+    margin-top: 0;
+    cursor: pointer;
+}
+.btn3 .btn-text {
+    margin-top: 11px;
+    font-size: larger;
+}
+/*收藏夹按钮*/
+.btn4 {
+    /*position: absolute;*/
+    /*left: 30%;*/
+    cursor: pointer;
+}
+/*.btn4 .btn-text {*/
+    /*margin-top: 11px;*/
+    /*font-size: larger;*/
+/*}*/

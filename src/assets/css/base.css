@@ -1,0 +1,189 @@
+.container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+/*表格*/
+table {
+    width: 80%;
+    font-size: 14px;
+    border-collapse: collapse;
+    border:1px solid #e9e9e9;
+}
+tr:hover {
+    background-color: rgb(243,243,243);
+}
+tr:hover  .btn1{
+    background-color: rgb(243,243,243);
+}
+/*多选框*/
+.checkbox {
+    color: #1f2d3d;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: 200;
+    line-height: 20px;
+    font-size: 14px;
+}
+.checkbox-input {
+    margin-right: 20px;
+    outline: 0;
+    line-height: 1;
+    vertical-align: middle;
+    display: inline-block;
+}
+.checkbox-inner:hover {
+    border-color: #20a0ff;
+}
+.checkbox-inner {
+    display: inline-block;
+    border: 1px solid #bfcbd9;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    z-index: 1;
+    transition: border-color .25s cubic-bezier(.71,-.46,.29,1.46),background-color .25s cubic-bezier(.71,-.46,.29,1.46);
+ }
+.checkbox-original:checked + .checkbox-inner {
+    background-color: #20a0ff;
+}
+.checkbox-original:checked + .checkbox-inner::after{
+    box-sizing: content-box;
+    content: "";
+    border: 2px solid #fff;
+    border-left: 0;
+    border-top: 0;
+    height: 8px;
+    left: 5px;
+    position: absolute;
+    top: 3px;
+    left: 6px;
+    -ms-transform: rotate(45deg) ;
+    transform: rotate(45deg) ;
+    width: 4px;
+    transition: transform .15s cubic-bezier(.71,-.46,.88,.6) .05s;
+    -ms-transform-origin: center;
+    transform-origin: center;
+}
+.checkbox-original {
+    opacity: 0;
+    outline: 0;
+    position: absolute;
+    margin: 0;
+    width: 0;
+    height: 0;
+}
+.checkbox-label {
+    margin-left: -20px;
+    color: #999999;
+    font-weight: normal;
+    font-size: 14px;
+    padding-left: 5px;
+}
+#ch1 {
+    margin-left: 2px;
+}
+#ch2 {
+    margin-right: 20px;
+}
+/*标题栏*/
+th {
+    height: 36px;
+    color: #999999;
+    font-weight: normal;
+    background-color: rgb(243,243,243);
+}
+/*商品名标题*/
+/*#Pname {*/
+    /*text-align: left;*/
+/*}*/
+/*内容栏*/
+tr {
+    border-bottom: 1px solid #e9e9e9;
+}
+/*第一列表*/
+.line1 {
+    width: 30px;
+}
+.line2 {
+    width: 30px;
+}
+
+/*图片*/
+img {
+    float: left;
+    width: 110px;
+    margin: 8px 13px 8px -38px;
+}
+/*商品列表*/
+.product {
+    width: 47%;
+}
+.productName {
+    text-align: left;
+}
+/*商品文字描述*/
+/*特殊浅灰色字体*/
+.specialColor {
+    color: #999999;
+}
+p {
+    margin: 0;
+}
+.text1 {
+    margin-top: 13px;
+}
+.text2 {
+    text-align: center;
+}
+/*数量输入框*/
+#countBtn {
+    margin-left: 20px;
+    text-align: center;
+}
+.countText {
+    width: 47px;
+    height: 29px;
+    margin-top: 2px;
+    border: 1px solid #e9e9e9;
+    text-align: center;
+}
+
+/*加减按钮*/
+.btn1 {
+    width: 19px;
+    height: 33px;
+    color: #999999;
+    background-color: #fff;
+    margin-top: 2px;
+    border: 1px solid #e9e9e9;
+    cursor: pointer;
+}
+/*小计*/
+.ShowMoney {
+    font-weight: 600;
+}
+/*删除*/
+.removeBtn {
+    cursor: pointer;
+}
+/*移到我的收藏*/
+.removeFav {
+    cursor: pointer;
+}
+/*加入收藏*/
+.addFav {
+    cursor: pointer;
+}
+/*取消收藏*/
+.isActive {
+    cursor: pointer;
+    color: red;
+}

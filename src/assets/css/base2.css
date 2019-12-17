@@ -1,0 +1,50 @@
+#mark-page {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+/*表格*/
+table {
+    width: 80%;
+    font-size: 14px;
+    border-collapse: collapse;
+    border:1px solid #e9e9e9;
+}
+tr:hover {
+    background-color: rgb(243,243,243);
+}
+tr:hover  .btn1{
+    background-color: rgb(243,243,243);
+}
+/*标题栏*/
+th {
+    height: 36px;
+    color: #999999;
+    font-weight: normal;
+    background-color: rgb(243,243,243);
+}
+/*内容栏*/
+tr {
+    border-bottom: 1px solid #e9e9e9;
+}
+p {
+    margin: 0;
+}
+.text1 {
+    margin-top: 13px;
+}
+.text2 {
+    text-align: center;
+}
+/*商品图*/
+img {
+    /*margin-left: 10%;*/
+    float: left;
+    width: 110px;
+    margin: 8px 13px 8px 40px;
+}
+/*取消收藏*/
+.deleteFav:hover {
+    cursor: pointer;
+    color: red;
+}
