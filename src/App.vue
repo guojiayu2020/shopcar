@@ -6,12 +6,10 @@
               :StotalMoney="totalMoney"
               :ScheckedLength="checkedLength"
               :SisCheckedAll="isCheckedAll"
-              @decrement="decrement"
-              @increment="increment"
+              @calcCount="calcCount"
               @removeHandle="removeHandle"
               @removeFav="removeFav"
-              @addFav="addFav"
-              @deleteFav="deleteFav"
+              @putFav="putFav"
               @deleteChecked="deleteChecked"
               @changeMoney="changeMoney"
               @calcChecked="calcChecked"
@@ -40,7 +38,7 @@
       <span class="redColor">{{checkedLength}}</span>项服务
     </span>
     <span class="foot2 footStyle">总价：<span class="redColor total">{{totalMoney | showPrice}}</span></span>
-    <span class="btn3"><div class="btn-text">去结算</div></span>
+    <span class="btn3"><div class="btn-text" @click="checkAllPrice">去结算</div></span>
     <!--<span class="btn4" @click="markFlag = !markFlag"><div class="btn-text">收藏夹</div></span>-->
   </div>
 
@@ -50,14 +48,17 @@
                :Mitem="markitem"
                @deleteMark="deleteMark">
     </mark-page>
-
   </div>
 </template>
 
 <script>
 import MarkPage from './components/MarkPage'
 import ShopCar from './components/ShopCar'
-import pic from './assets/img/pic.png'
+import pic1 from './assets/img/pic1.jpg'
+import pic2 from './assets/img/pic2.jpg'
+import pic3 from './assets/img/pic3.jpg'
+import pic4 from './assets/img/pic4.jpg'
+import pic5 from './assets/img/pic5.jpg'
 
 export default {
   name: 'app',
@@ -80,56 +81,56 @@ export default {
       items: [
         {
           id: 0,
-          img: pic,
-          name: 'GZL-中控离心机净化机1',
-          supplier: '美国1',
-          address: '中国大陆1',
-          price: 100.00,
+          img: pic1,
+          name: 'Gucci古驰花悦绽放女士香水',
+          supplier: '法国',
+          address: '广东深圳',
+          price: 355.00,
           count: 1,
           isActive: false,
           checked: false
         },
         {
           id: 1,
-          img: pic,
-          name: 'GZL-中控离心机净化机2',
-          supplier: '美国2',
-          address: '中国大陆2',
-          price: 100.00,
-          count: 2,
+          img: pic2,
+          name: 'Versace范思哲爱神之水男士香水',
+          supplier: '意大利',
+          address: '广东深圳',
+          price: 263.00,
+          count: 1,
           isActive: false,
           checked: false
         },
         {
           id: 2,
-          img: pic,
-          name: 'GZL-中控离心机净化机3',
-          supplier: '美国3',
-          address: '中国大陆3',
-          price: 100.00,
-          count: 3,
+          img: pic3,
+          name: '马克雅克布莫杰梦境小雏菊女士淡香水',
+          supplier: '法国',
+          address: '香港',
+          price: 488.00,
+          count: 1,
           isActive: false,
           checked: false
         },
         {
           id: 3,
-          img: pic,
-          name: 'GZL-中控离心机净化机4',
-          supplier: '美国4',
-          address: '中国大陆4',
-          price: 100.00,
-          count: 4,
+          img: pic4,
+          name: 'Gucci古驰绚丽栀子花女士淡香水',
+          supplier: '法国',
+          address: '北京',
+          price: 580.00,
+          count: 1,
           isActive: false,
           checked: false
         },
         {
           id: 4,
-          img: pic,
-          name: 'GZL-中控离心机净化机5',
-          supplier: '美国5',
-          address: '中国大陆5',
-          price: 600.00,
-          count: 5,
+          img: pic5,
+          name: 'CK凯文克莱喜欢你女士男士香水',
+          supplier: '美国',
+          address: '浙江杭州',
+          price: 255.00,
+          count: 1,
           isActive: false,
           checked: false
         }
@@ -139,11 +140,14 @@ export default {
   methods: {
     // 子组件传回数据
     // 商品数量减少
-    decrement (count, index) {
-      this.items[index].count = count
-    },
-    // 商品数量增加
-    increment (count, index) {
+    // decrement (count, index) {
+    //   this.items[index].count = count
+    // },
+    // // 商品数量增加
+    // increment (count, index) {
+    //   this.items[index].count = count
+    // },
+    calcCount (count, index) {
       this.items[index].count = count
     },
     // 删除单个商品
@@ -156,11 +160,14 @@ export default {
       this.markitem = Mitem
     },
     // 加入收藏
-    addFav (Mitem) {
-      this.markitem = Mitem
-    },
-    // 取消收藏
-    deleteFav (Mitem) {
+    // addFav (Mitem) {
+    //   this.markitem = Mitem
+    // },
+    // // 取消收藏
+    // deleteFav (Mitem) {
+    //   this.markitem = Mitem
+    // },
+    putFav (Mitem) {
       this.markitem = Mitem
     },
     // 由子组件回传isCheckAll判断是否全选
@@ -245,9 +252,14 @@ export default {
       this.calcTotalChecked()
       // console.log(index)
       // console.log(this.items[index].isActive)
+    },
+    // 结算按钮
+    checkAllPrice () {
+      alert('总价：' + this.totalMoney)
+      this.items = this.items.filter(item => !item.checked)
+      this.calcTotalPrice()
+      this.calcTotalChecked()
     }
-  },
-  computed: {
   },
   filters: {
     // 显示价格特殊格式

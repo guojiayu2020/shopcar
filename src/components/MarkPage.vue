@@ -7,8 +7,6 @@
                 <tr>
                     <th>商品或服务名称</th>
                     <th>单价</th>
-                    <th>数量</th>
-                    <th>小计</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -19,15 +17,11 @@
                     <td><img :src="item.img">
                         <!--商品或服务名称-->
                         <p class="textLine text1">{{item.name}}</p>
-                        <p class="specialColor textLine">{{item.supplier}}</p>
-                        <p class="specialColor textLine">{{item.address}}</p>
+                        <p class="specialColor textLine">商品产地：{{item.supplier}}</p>
+                        <p class="specialColor textLine">发货地：{{item.address}}</p>
                     </td>
                     <!--单价-->
                     <td class="specialColor text2">{{item.price| showPrice}}</td>
-                    <!--数量-->
-                    <td class="text2">{{item.count}}</td>
-                    <!--小计-->
-                    <td class="text2">{{item.price * item.count| showPrice}}</td>
                     <!--操作-->
                     <td class="deleteFav specialColor text2" @click="deleteMark(item,index)">取消收藏</td>
                 </tr>
@@ -64,7 +58,6 @@ export default {
   methods: {
     //  取消收藏
     deleteMark (item, index) {
-      // debugger
       this.markitem = this.Mitem
       this.items = this.Sitems
       // this.markitem.pop(index)
@@ -89,7 +82,7 @@ export default {
         for (let i = 0; i < this.items.length; i++) {
           if (this.items[i].id === item.id) {
             this.items[i].isActive = false
-            console.log(this.items[i])
+            // console.log(this.items[i])
           }
         }
         this.$emit('deleteMark', this.markitem, this.items)
@@ -121,6 +114,6 @@ export default {
 }
 </script>
 
-<style scoped>
-@import "../assets/css/base2.css";
+<style src="../assets/css/base2.css" scoped>
+/*@import "../assets/css/base2.css";*/
 </style>

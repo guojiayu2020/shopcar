@@ -7,7 +7,7 @@
                 <tr class="lightGray">
                     <th class="line1">
                         <label class="checkbox">
-                        <span class="checkbox-input" id="ch1">
+                        <span class="checkbox-input">
                         <input type="checkbox"
                           class="checkbox-original"
                           :checked="SisCheckedAll"
@@ -44,25 +44,25 @@
                     <td class="product"><img :src="item.img">
                         <!--商品或服务名称-->
                         <p class="textLine text1">{{item.name}}</p>
-                        <p class="specialColor textLine">{{item.supplier}}</p>
-                        <p class="specialColor textLine">{{item.address}}</p>
+                        <p class="specialColor textLine">商品产地：{{item.supplier}}</p>
+                        <p class="specialColor textLine">发货地：{{item.address}}</p>
                     </td>
                     <!--单价-->
                     <td class="specialColor text2">{{item.price | showPrice}}</td>
                     <!--数量-->
                     <td class="text2">
                         <div id="countBtn">
-                            <button class="btn1 lightGray" @click="decrement(index)" :disabled="item.count <= 1">-</button>
+                            <button class="btn1 lightGray" @click="calcCount(index,-1)" :disabled="item.count <= 1">-</button>
                             <!--<input class="countText" type="text"-->
                                    <!--v-model="item.count"-->
                                    <!--@click="calcTotalPrice"-->
                                    <!--:disabled="item.count < 1">-->
                             <input class="countText" type="text"
-                                   onkeyup="value = value.replace(/^(0+)|[^\d]+/g,'')"
                                    onKeyPress="if(window.event.keyCode==13) {this.blur()}"
+                                   oninput = "value=value.replace(/[^\d]/g,'')" maxlength="6"
                                    @input="calcTotalPrice"
                                    v-model="item.count">
-                            <button class="btn1 lightGray" @click="increment(index)">+</button>
+                            <button class="btn1 lightGray" @click="calcCount(index,1)" :disabled="item.count >= 999999">+</button>
                         </div>
                     </td>
                     <!--小计-->
@@ -71,8 +71,8 @@
                     <td class="text2">
                         <div class="removeBtn specialColor" @click="removeHandle(index)">删除</div>
                         <div class="removeFav specialColor" @click="removeFav(item,index)">移到我的收藏</div>
-                        <div v-if="!item.isActive"  class="addFav specialColor" @click="addFav(item,index)">加入收藏</div>
-                        <div v-else :class="{isActive: item.isActive}" class="deleteFav specialColor" @click="deleteFav(item,index)">取消收藏</div>
+                        <div v-if="!item.isActive"  class="addFav specialColor" @click="putFav(item,index,1)">加入收藏</div>
+                        <div v-else :class="{isActive: item.isActive}" class="deleteFav specialColor" @click="putFav(item,index,-1)">取消收藏</div>
                     </td>
                 </tr>
                 </tbody>
@@ -123,18 +123,30 @@ export default {
   },
   methods: {
     // 商品减少
-    decrement (index) {
-      this.items = this.Sitems
-      this.items[index].count--
-      this.calcTotalPrice()
-      this.$emit('decrement', this.items[index].count, index)
-    },
+    // decrement (index) {
+    //   this.items = this.Sitems
+    //   this.items[index].count--
+    //   this.calcTotalPrice()
+    //   this.$emit('decrement', this.items[index].count, index)
+    // },
     // 商品增加
-    increment (index) {
+    // increment (index) {
+    //   this.items = this.Sitems
+    //   this.items[index].count++
+    //   this.calcTotalPrice()
+    //   this.$emit('increment', this.items[index].count, index)
+    // },
+    //  商品数量增加和减少
+    calcCount (index, x) {
       this.items = this.Sitems
-      this.items[index].count++
+      if (x === 1) {
+        this.items[index].count++
+      }
+      if (x === -1) {
+        this.items[index].count--
+      }
       this.calcTotalPrice()
-      this.$emit('increment', this.items[index].count, index)
+      this.$emit('calcCount', this.items[index].count, index)
     },
     // 删除商品
     removeHandle (index) {
@@ -168,59 +180,56 @@ export default {
       // }
     },
     // 加入收藏
-    addFav (item, index) {
-      this.markitem = this.Mitem
-      this.items = this.Sitems
-      if (!this.markitem.includes(item)) {
-        this.markitem.push(item)
-        // console.log(item.id)
-        // console.log(item)
-        // console.log(this.markitem)
-        // console.log(this.markitem[1])
-        this.items[index].isActive = true
-        this.$emit('addFav', this.markitem)
-      }
-    },
     // addFav (item, index) {
-    //     this.markitem = this.Mitem
-    //     this.items = this.Sitems
-    //     if (!this.markitem.includes(item)) {
-    //         this.markitem.push(item)
-    //         this.items[index].isActive = true
-    //         this.$emit('addFav', this.markitem)
-    //     }
+    //   this.markitem = this.Mitem
+    //   this.items = this.Sitems
+    //   if (!this.markitem.includes(item)) {
+    //     this.markitem.push(item)
+    //     // console.log(item.id)
+    //     // console.log(item)
+    //     // console.log(this.markitem)
+    //     // console.log(this.markitem[1])
+    //     this.items[index].isActive = true
+    //     this.$emit('addFav', this.markitem)
+    //   }
     // },
     // 取消收藏
-    deleteFav (item, index) {
-      this.markitem = this.Mitem
-      this.items = this.Sitems
-      // console.log(index)
-      for (let i = 0; i < this.markitem.length; i++) {
-        if (index === this.markitem[i].id) {
-          // console.log(this.markitem[i].id)
-          this.markitem.splice(i, 1)
-        }
-      }
-      // this.markitem.forEach(value => {
-      //   console.log(value)
-      //   if (index === value.id) {
-      //     this.markitem.splice(index, 1)
-      //   }
-      // })
-      // const list = this.markitem.filter(value => {
-      //   index === value.id
-      // })
-      this.items[index].isActive = false
-      this.$emit('deleteFav', this.markitem)
-    },
     // deleteFav (item, index) {
     //   this.markitem = this.Mitem
     //   this.items = this.Sitems
-    //   this.markitem.pop(item)
+    //   // console.log(index)
+    //   for (let i = 0; i < this.markitem.length; i++) {
+    //     if (index === this.markitem[i].id) {
+    //       // console.log(this.markitem[i].id)
+    //       this.markitem.splice(i, 1)
+    //     }
+    //   }
     //   this.items[index].isActive = false
     //   this.$emit('deleteFav', this.markitem)
     // },
-
+    // 加入和取消收藏
+    putFav (item, index, x) {
+      this.markitem = this.Mitem
+      this.items = this.Sitems
+      //  如果x为1则加入收藏
+      if (x === 1) {
+        this.markitem.push(item)
+        this.items[index].isActive = true
+        // console.log(this.markitem)
+      }
+      // 如果x为-1则移出收藏
+      if (x === -1) {
+        for (let i = 0; i < this.markitem.length; i++) {
+          if (this.items[index].id === this.markitem[i].id) {
+            // console.log(this.markitem[i])
+            this.markitem.splice(i, 1)
+          }
+        }
+        this.items[index].isActive = false
+        // console.log(this.markitem)
+      }
+      this.$emit('putFav', this.markitem)
+    },
     // 单选
     checkedOne (item) {
       item.checked = !item.checked

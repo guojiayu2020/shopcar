@@ -1,5 +1,5 @@
 .container {
-    margin-top: 50px;
+    margin-top: 23px;
     display: flex;
     justify-content: center;
 }
@@ -30,6 +30,7 @@ tr:hover  .btn1{
 }
 .checkbox-input {
     margin-right: 20px;
+    margin-left: 10px;
     outline: 0;
     line-height: 1;
     vertical-align: middle;
@@ -61,10 +62,9 @@ tr:hover  .btn1{
     border-left: 0;
     border-top: 0;
     height: 8px;
-    left: 5px;
+    left: 16px;
     position: absolute;
     top: 3px;
-    left: 6px;
     -ms-transform: rotate(45deg) ;
     transform: rotate(45deg) ;
     width: 4px;
@@ -86,9 +86,6 @@ tr:hover  .btn1{
     font-weight: normal;
     font-size: 14px;
     padding-left: 5px;
-}
-#ch1 {
-    margin-left: 2px;
 }
 #ch2 {
     margin-right: 20px;
@@ -123,9 +120,9 @@ img {
     margin: 8px 13px 8px -38px;
 }
 /*商品列表*/
-.product {
-    width: 47%;
-}
+/*.product {*/
+    /*width: 47%;*/
+/*}*/
 .productName {
     text-align: left;
 }
@@ -142,6 +139,7 @@ p {
 }
 .text2 {
     text-align: center;
+    width: 135px;
 }
 /*数量输入框*/
 #countBtn {
