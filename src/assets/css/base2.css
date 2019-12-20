@@ -37,8 +37,11 @@ p {
 img {
     /*margin-left: 10%;*/
     float: left;
-    width: 110px;
+    width: 100px;
+    height: 100px;
     margin: 8px 13px 8px 40px;
+    padding: 5px;
+    border: 1px solid #DEDEDE;
 }
 /*取消收藏*/
 .deleteFav:hover {
