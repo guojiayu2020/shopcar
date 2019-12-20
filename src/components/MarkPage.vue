@@ -60,8 +60,6 @@ export default {
     deleteMark (item, index) {
       this.markitem = this.Mitem
       this.items = this.Sitems
-      // this.markitem.pop(index)
-      // this.items[index].isActive = false
       //  如果购物车不含有此商品，则在购物车加入此商品，并移出收藏夹
       if (!this.items.includes(item)) {
         this.items.push(item)
@@ -73,11 +71,9 @@ export default {
             // console.log(this.items[i])
           }
         }
-        // this.markitem.pop(item)
         this.$emit('deleteMark', this.markitem, this.items)
       } else {
         //  如果购物车含有此商品，则直接移出收藏夹
-        // this.markitem.pop(item)
         this.markitem.splice(index, 1)
         for (let i = 0; i < this.items.length; i++) {
           if (this.items[i].id === item.id) {
@@ -88,23 +84,6 @@ export default {
         this.$emit('deleteMark', this.markitem, this.items)
       }
     }
-    // deleteMark (item, index) {
-    //   this.markitem = this.Mitem
-    //   this.items = this.Sitems
-    //   // this.markitem.pop(index)
-    //   // this.items[index].isActive = false
-    //   if (!this.items.includes(item)) {
-    //     this.items.push(item)
-    //     this.items[index].isActive = false
-    //     this.markitem.splice(item.id, 1)
-    //     // this.markitem.pop(item)
-    //     this.$emit('deleteMark', this.markitem, item.id)
-    //   } else {
-    //     this.markitem.pop(item)
-    //     this.items[index].isActive = false
-    //     this.$emit('deleteMark', this.markitem, item.id)
-    //   }
-    // }
   },
   filters: {
     showPrice (price) {

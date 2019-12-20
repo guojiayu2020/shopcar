@@ -139,14 +139,7 @@ export default {
   },
   methods: {
     // 子组件传回数据
-    // 商品数量减少
-    // decrement (count, index) {
-    //   this.items[index].count = count
-    // },
-    // // 商品数量增加
-    // increment (count, index) {
-    //   this.items[index].count = count
-    // },
+    // 计算商品数量
     calcCount (count, index) {
       this.items[index].count = count
     },
@@ -159,14 +152,7 @@ export default {
       this.items = Sitems
       this.markitem = Mitem
     },
-    // 加入收藏
-    // addFav (Mitem) {
-    //   this.markitem = Mitem
-    // },
-    // // 取消收藏
-    // deleteFav (Mitem) {
-    //   this.markitem = Mitem
-    // },
+    // 加入收藏和取消收藏
     putFav (Mitem) {
       this.markitem = Mitem
     },

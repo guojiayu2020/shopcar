@@ -53,10 +53,6 @@
                     <td class="text2">
                         <div id="countBtn">
                             <button class="btn1 lightGray" @click="calcCount(index,-1)" :disabled="item.count <= 1">-</button>
-                            <!--<input class="countText" type="text"-->
-                                   <!--v-model="item.count"-->
-                                   <!--@click="calcTotalPrice"-->
-                                   <!--:disabled="item.count < 1">-->
                             <input class="countText" type="text"
                                    onKeyPress="if(window.event.keyCode==13) {this.blur()}"
                                    oninput = "value=value.replace(/[^\d]/g,'')" maxlength="6"
@@ -122,20 +118,6 @@ export default {
     }
   },
   methods: {
-    // 商品减少
-    // decrement (index) {
-    //   this.items = this.Sitems
-    //   this.items[index].count--
-    //   this.calcTotalPrice()
-    //   this.$emit('decrement', this.items[index].count, index)
-    // },
-    // 商品增加
-    // increment (index) {
-    //   this.items = this.Sitems
-    //   this.items[index].count++
-    //   this.calcTotalPrice()
-    //   this.$emit('increment', this.items[index].count, index)
-    // },
     //  商品数量增加和减少
     calcCount (index, x) {
       this.items = this.Sitems
@@ -172,41 +154,7 @@ export default {
       this.calcTotalPrice()
       this.calcChecked()
       this.$emit('removeFav', this.items, this.markitem)
-      // if (confirm('此操作将已选择商品或服务移到我的收藏，是否继续')) {
-      //
-      //   alert('收藏成功')
-      // } else {
-      //   alert('已取消收藏')
-      // }
     },
-    // 加入收藏
-    // addFav (item, index) {
-    //   this.markitem = this.Mitem
-    //   this.items = this.Sitems
-    //   if (!this.markitem.includes(item)) {
-    //     this.markitem.push(item)
-    //     // console.log(item.id)
-    //     // console.log(item)
-    //     // console.log(this.markitem)
-    //     // console.log(this.markitem[1])
-    //     this.items[index].isActive = true
-    //     this.$emit('addFav', this.markitem)
-    //   }
-    // },
-    // 取消收藏
-    // deleteFav (item, index) {
-    //   this.markitem = this.Mitem
-    //   this.items = this.Sitems
-    //   // console.log(index)
-    //   for (let i = 0; i < this.markitem.length; i++) {
-    //     if (index === this.markitem[i].id) {
-    //       // console.log(this.markitem[i].id)
-    //       this.markitem.splice(i, 1)
-    //     }
-    //   }
-    //   this.items[index].isActive = false
-    //   this.$emit('deleteFav', this.markitem)
-    // },
     // 加入和取消收藏
     putFav (item, index, x) {
       this.markitem = this.Mitem
