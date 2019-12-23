@@ -48,3 +48,7 @@ img {
     cursor: pointer;
     color: red;
 }
+
+.lightGray {
+    color: #999999;
+}

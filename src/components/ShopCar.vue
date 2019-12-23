@@ -14,7 +14,7 @@
                           @click="checkedAll">
                         <span class="checkbox-inner"></span>
                         </span>
-                        <span class="checkbox-label" id="ch2">全选</span>
+                        <span class="checkbox-label blueBtn" id="ch2">全选</span>
                         </label>
                     </th>
                     <th class="productName">商品或服务名称</th>
@@ -65,9 +65,9 @@
                     <td class="text2"><span class="ShowMoney">{{item.price * item.count | showPrice}}</span></td>
                     <!--操作-->
                     <td class="text2">
-                        <div class="removeBtn specialColor" @click="removeHandle(index)">删除</div>
-                        <div class="removeFav specialColor" @click="removeFav(item,index)">移到我的收藏</div>
-                        <div v-if="!item.isActive"  class="addFav specialColor" @click="putFav(item,index,1)">加入收藏</div>
+                        <div class="removeBtn specialColor redBtn" @click="removeHandle(index)">删除</div>
+                        <div class="removeFav specialColor greenBtn" @click="removeFav(item,index)">移到我的收藏</div>
+                        <div v-if="!item.isActive"  class="addFav specialColor blueBtn" @click="putFav(item,index,1)">加入收藏</div>
                         <div v-else :class="{isActive: item.isActive}" class="deleteFav specialColor" @click="putFav(item,index,-1)">取消收藏</div>
                     </td>
                 </tr>

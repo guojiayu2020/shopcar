@@ -182,3 +182,14 @@ p {
     cursor: pointer;
     color: red;
 }
+
+/*控件颜色*/
+.redBtn:hover {
+    color: #ff0000;
+    font-weight: 600;
+}
+
+.greenBtn:hover {
+    color: #31802c;
+    font-weight: 600;
+}

@@ -5,7 +5,7 @@
                 <!--导航栏-->
                 <thead>
                 <tr>
-                    <th>商品或服务名称</th>
+                    <th><span>商品或服务名称</span></th>
                     <th>单价</th>
                     <th>操作</th>
                 </tr>
@@ -17,8 +17,8 @@
                     <td><img :src="item.img">
                         <!--商品或服务名称-->
                         <p class="textLine text1">{{item.name}}</p>
-                        <p class="specialColor textLine">商品产地：{{item.supplier}}</p>
-                        <p class="specialColor textLine">发货地：{{item.address}}</p>
+                        <p class="lightGray textLine">商品产地：{{item.supplier}}</p>
+                        <p class="lightGray textLine">发货地：{{item.address}}</p>
                     </td>
                     <!--单价-->
                     <td class="specialColor text2">{{item.price| showPrice}}</td>

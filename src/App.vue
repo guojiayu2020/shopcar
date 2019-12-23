@@ -27,19 +27,18 @@
                        @click="checkedAll">
                  <span class="checkbox-inner"></span>
               </span>
-            <span class="checkbox-label">全选</span>
+            <span class="checkbox-label blueBtn">全选</span>
       </label>
     </span>
-    <span class="deleteCheck footStyle" @click="deleteChecked">删除选中的商品或服务</span>
-    <span class="removeCheck footStyle" @click="removeChecked">移到我的收藏</span>
-    <span class="btn4 footStyle" @click="ShowMarkPage"><div class="btn-text">收藏夹</div></span>
+    <span class="deleteCheck footStyle blueBtn" @click="deleteChecked">删除选中的商品或服务</span>
+    <span class="removeCheck footStyle blueBtn" @click="removeChecked">移到我的收藏</span>
+    <span class="btn4 footStyle blueBtn" @click="ShowMarkPage"><div class="btn-text">收藏夹</div></span>
     <span class="foot1 footStyle">已选择<span class="redText"></span>
       <span class="redColor">{{checkedLength}}</span>件商品
       <span class="redColor">{{checkedLength}}</span>项服务
     </span>
     <span class="foot2 footStyle">总价：<span class="redColor total">{{totalMoney | showPrice}}</span></span>
     <span class="btn3"><div class="btn-text" @click="checkAllPrice">去结算</div></span>
-    <!--<span class="btn4" @click="markFlag = !markFlag"><div class="btn-text">收藏夹</div></span>-->
   </div>
 
     <h2 v-if="markFlag">收藏夹</h2>
@@ -241,7 +240,7 @@ export default {
     },
     // 结算按钮
     checkAllPrice () {
-      alert('总价：' + this.totalMoney)
+      alert('土豪，您一共消费了：' + this.totalMoney + '元')
       this.items = this.items.filter(item => !item.checked)
       this.calcTotalPrice()
       this.calcTotalChecked()

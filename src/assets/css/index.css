@@ -130,7 +130,7 @@ h2 {
     width: 100px;
     height: 50px;
     color: #fff;
-    background-color: rgb(32,156,235);
+    background-color: #20a0ff;
     text-align: center;
     margin-top: 0;
     cursor: pointer;
@@ -142,4 +142,10 @@ h2 {
 /*收藏夹按钮*/
 .btn4 {
     cursor: pointer;
+}
+
+/*控件颜色*/
+.blueBtn:hover {
+    color: #20a0ff;
+    font-weight: 600;
 }
